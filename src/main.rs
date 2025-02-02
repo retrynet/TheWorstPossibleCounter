@@ -31,5 +31,10 @@ fn main() {
             current_value,
             inconsistency_counter.load(Ordering::SeqCst)
         );
+        if current_value % 2 == 0 {
+            num.store(current_value / 2, Ordering::SeqCst);
+        } else {
+            num.store(current_value * 3 + 1, Ordering::SeqCst);
+        }
     }
 }
